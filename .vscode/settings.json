@@ -1,0 +1,9 @@
+{
+  "editor.formatOnSave": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "eslint.validate": ["javascript", "typescript", "typescriptreact"],
+  "files.exclude": { "**/__pycache__": true },
+
+  "python.defaultInterpreterPath": "C:\\Users\\lucas\\OneDrive\\Área de Trabalho\\Automacao-Obra\\apps\\api\\.venv\\Scripts\\python.exe",
+  "python.analysis.extraPaths": []
+}

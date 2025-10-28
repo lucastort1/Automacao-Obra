@@ -1,0 +1,14 @@
+{
+  "name": "orcaia",
+  "private": true,
+  "packageManager": "pnpm@9.0.0",
+  "workspaces": [
+    "apps/web",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "pnpm --filter @orcaia/web dev",
+    "build:web": "pnpm --filter @orcaia/web build",
+    "lint": "echo \"add linters\""
+  }
+}

@@ -1,0 +1,17 @@
+# Node
+node_modules
+.next
+dist
+
+# Python
+__pycache__/
+*.pyc
+.venv
+.uv/
+
+# Env & misc
+.env
+.env.*
+*.log
+coverage/
+data/sinapi_etl/outputs/*

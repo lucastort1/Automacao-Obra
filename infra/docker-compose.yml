@@ -1,0 +1,39 @@
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.web
+    command: pnpm --filter @orcaia/web dev
+    ports: [ "3000:3000" ]
+    volumes:
+      - ../:/workspace
+    depends_on: [ api ]
+
+  api:
+    build:
+      context: ../apps/api
+      dockerfile: Dockerfile
+    environment:
+      - DB_URL=postgresql+psycopg://postgres:postgres@db:5432/orcaia
+      - REDIS_URL=redis://redis:6379/0
+    ports: [ "8000:8000" ]
+    depends_on: [ db, redis ]
+    volumes:
+      - ../apps/api:/app
+
+  db:
+    image: postgres:16
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=orcaia
+    ports: [ "5432:5432" ]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  redis:
+    image: redis:7-alpine
+    ports: [ "6379:6379" ]
+
+volumes:
+  pgdata:
